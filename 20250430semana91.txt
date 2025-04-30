@@ -1,0 +1,114 @@
+taller 2 -> interfaz gráfica de taller 1. 
+
+
+consumo de energía, procesadores. 
+
+model view controller. 
+
+base de datos, procedimientos almacenados. 
+
+Model view controller. 
+
+-> Every peel has their own objective. 
+
+-> asking 100 first things. -> 100 worsts. 
+the problem is in the data base. 
+
+view -> shows information. 
+
+100 first things -> 
+organized from best to worst. 
+shows it from worst to best. 
+-> the problem is the view, on how it presents information. It could be the problem is before. 
+
+Reviewing the vierw is easier. 
+
+advantages in correction of errors ^ 
+
+
+
+
+übung 1. 
+p u b l i c c l a s s LoginView {
+p r i v a t e S t r i n g user , pass ;
+p u b l i c LoginView ( ){
+showMessage ( ” Login MVC” ) ;
+Scanner sc = new Scanner ( System . i n ) ;
+t h i s . showMessage ( ” Usua rio : ” ) ;
+use r = sc . n e xt L i n e ( ) ;
+t h i s . showMessage ( ” Contrasen˜ a : ” ) ;
+pass = sc . n e xt L i n e ( ) ;
+}
+p u b l i c S t r i n g getUse r ( ){
+r e t u r n use r ;
+}
+p u b l i c S t r i n g getPass ( ){
+r e t u r n pass ;
+}
+p u b l i c v o i d showMessage ( S t r i n g msg){
+System . out . p r i n t l n (msg ) ;
+}
+}
+
+
+
+
+
+
+
+
+
+
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ */
+
+package com.mycompany.ubung;
+
+
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author Alumno
+ */
+
+public class Ubung {
+
+    public class LoginView 
+    {
+        private String user, pass;
+        
+        public LoginView()
+        {
+            showMessage( "Login MVC" ) ;
+            Scanner sc = new Scanner(System.in);
+            
+            this.showMessage("Usuario : ") ;
+            user = sc.nextLine() ;
+            this.showMessage(" Contrasena : ");
+            pass = sc.nextLine() ;
+        }
+    } 
+    public String getUser()
+    {
+    return user;
+    }
+    
+    public String getPass()
+    {
+    return pass;
+    }
+    
+    public void showMessage(String msg)
+    {
+    System.out.println(msg );
+    }
+}
+
+
+
+
+
+retomar programa 
