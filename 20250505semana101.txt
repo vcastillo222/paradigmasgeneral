@@ -1,1 +1,407 @@
 
+//// arquitectura. -> controlador, modelo y base de datos y vista. 
+
+
+login model . java 
+
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package com.mycompany.proyecto;
+
+import java.io.File;
+import java.util.Scanner;
+
+/**
+ *
+ * @author Alumno
+ */
+class LoginModel {
+    
+    private String user, pass; 
+    
+    
+    /// método público uno de dols valores. 
+    
+    public boolean verificarUsuario(String usuario, String pswd)
+    {
+        File file = new File("data.txt");
+                ///extraer información, crear y abrir archivo
+                
+        Scanner sc = new Scanner (file);
+        
+        while( sc.hasNextLine())
+        {
+            data = sc.nextLine();
+            String u = data.split(",",0)[0];
+            String p = data.split(",",0)[1];
+            
+        /// extrae usuario y contraseña en primera y segunda posicion y añade una coma
+        
+            if(u.equals(usuario) && p.equals(pswd))
+            {
+                return true;
+                
+                //// cuando ambos datos existan, se retorna el verdadero. 
+            }
+        }
+        return false; 
+    }
+    
+}
+
+
+login control . java 
+
+
+
+
+
+mvc.java 
+
+
+
+
+
+
+
+
+
+-------------------------
+
+login model 
+
+----------------------------
+
+
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package com.mycompany.proyecto;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
+/**
+ *
+ * @author Alumno
+ */
+class LoginModel {
+    
+    private String user, pass; 
+    
+    
+    /// método público uno de dols valores. 
+    
+    public boolean verificarUsuario(String usuario, String pswd)
+    {
+        File file = new File("data.txt");
+                ///extraer información, crear y abrir archivo
+                
+        try{   
+            Scanner sc = new Scanner (file);
+            String data;
+        while( sc.hasNextLine())
+        {
+            data = sc.nextLine();
+            String u = data.split(",",0)[0];
+            String p = data.split(",",0)[1];
+            
+        /// extrae usuario y contraseña en primera y segunda posicion y añade una coma
+        
+            if(u.equals(usuario) && p.equals(pswd))
+            {
+                return true;
+                
+                //// cuando ambos datos existan, se retorna el verdadero. 
+            }
+        }catch(FileNotFoundException e)
+                { 
+                System.out.println("NO SE HA ENCONTRADO EL ARCHIVO");
+                return false;
+                }
+        }
+        return false; 
+        
+        
+        }
+    
+}
+
+------------
+facilidad para encontrar errores debido análisis basado en el estudio de capas. 
+
+
+------------------------------------------
+
+
+
+
+
+
+
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package com.mycompany.proyecto;
+
+import java.awt.GridLayout;
+import java.util.Scanner;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+
+/////javax.swing.*;
+
+
+/**
+ *
+ * @author Alumno
+ */
+
+public class loginview {
+    private String user;
+    private String pswd; 
+    
+    
+    public loginview extends JPanel
+    {
+        Scanner sc = new Scanner(System.in);
+        user = sc.NextLine(); 
+        pswd = sc.nextLine(); 
+        
+        /// se pide que ingrese el nombre. 
+        /// no se puede acceder desde cosas externas, pero mediante un método. 
+        
+        private JLabel userLabel = new JLabel("Usuario");
+        private JLabel passLabel = new JLabel("Contraseña");
+        
+        
+        private JLabel resultLabel = new JLabel("");
+        //// modificación de interfaz 
+        
+        private JTextField user = new JTextField(); 
+        
+        //// se escribe el nombre de usuario 
+        
+        private JPasswordField pass = new JPasswordField(); 
+        
+        //// campo de texto específico para escribir contraseñas 
+    
+        private JButton boton = new JButton("ingresar");
+        
+    
+    
+    
+    public loginview()
+    {
+        setLayout(new GridLayout(3,2)); 
+        add(userLabel);
+        add(user);
+        add(passLabel);
+        add(pass);
+        //// add (new); 
+        add(boton);
+        add(resultLabel);
+        
+        
+    }
+    
+    
+    public String  getUser()
+    {
+        return user.getText();
+    }
+    
+    public char[] getPass()
+    {   return pass.getPassword();
+        
+    }
+
+    public void showMessage(String s)
+    { 
+        resultLabel.setText(s);
+        JOptionPane.showMessageDialog(this, s);
+    }
+    
+    public void addLoginListener(ActionListener log)
+    {
+        boton.addActionListener(log);
+    }
+    
+    public void actionPerformed(ActionEvent e)
+    {
+        
+    }
+
+}
+
+
+
+
+
+
+    
+    
+
+//// jeredar extendido de jpanel 
+
+
+----------
+
+arriba login view 
+
+abajo model 
+
+----------------------------------------------
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package com.mycompany.proyecto;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
+/**
+ *
+ * @author Alumno
+ */
+class LoginModel {
+    
+    private String user, pass; 
+    
+    
+    /// método público uno de dols valores. 
+    
+    public boolean verificarUsuario(String usuario, String pswd)
+    {
+        File file = new File("data.txt");
+                ///extraer información, crear y abrir archivo
+                
+        try{   
+            Scanner sc = new Scanner (file);
+            String data;
+        while( sc.hasNextLine())
+        {
+            data = sc.nextLine();
+            String u = data.split(",",0)[0];
+            String p = data.split(",",0)[1];
+            
+        /// extrae usuario y contraseña en primera y segunda posicion y añade una coma
+        
+            if(u.equals(usuario) && p.equals(pswd))
+            {
+                return true;
+                
+                //// cuando ambos datos existan, se retorna el verdadero. 
+            }
+        }
+        }catch(FileNotFoundException e)
+                { 
+                System.out.println("NO SE HA ENCONTRADO EL ARCHIVO");
+                return false;
+                }
+        
+        return false; 
+        
+        }
+        
+        }
+    
+
+
+
+///// se utiliza para excepciones el filenotfoundexception e 
+
+
+
+-----------------------
+login control 
+
+---------------
+*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package com.mycompany.proyecto;
+
+
+
+import com.mycompany.proyecto.logincontrol.<init>.LoginListener;
+
+import java.awt.event.ActionEvent;
+import javax.swing.JFrame;
+
+
+
+import javax.swing.JFrame;
+
+
+/**
+ *
+ * @author Alumno
+ */
+public class logincontrol {
+    private LoginModel model; 
+    private loginview view;
+    
+    
+    private JFrame frame = new JFrame("LoginMVC");
+    
+    /////se le declara la operación por defecto cuanto se apreten las operaciones de cierre 
+    
+    public logincontrol()
+    {
+        this.model = new LoginModel(); 
+        this.view = new loginview();
+        
+        ////objeto tipo vista, utilizar mientras se utiliza la interfaz. 
+        
+        /// se debe enviar "señales." 
+        
+        //// el paradigma es la representación de objetos.
+        
+        /// se debe indicar un escuchador para el login. 
+        
+        int width = 300,height = 400;
+        frame.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE);
+        frame.setSize(width,height);      
+        frame.setLocation(200,200);
+        frame.setVisible(true); 
+        
+        
+        view.addLoginListener( new LoginListener() );
+        
+        
+        
+        ////se hace para implementar la acción que se debe observar, es un evento. 
+        class LoginListener implements ActionListener
+        {
+            public void actionPerformed(ActionEvent e) 
+            {
+                String user = view.getUser(); 
+                char[] pass = view.getPass();
+                
+                if(model.verificarUsuario(user,pass))
+                {
+                    view.showMessage("Acceso permitido");
+                    frame.setContentPane(view);
+                    frame.setVisible(true); 
+                    
+                }
+                
+            }
+        }
+}
+}
+
+
